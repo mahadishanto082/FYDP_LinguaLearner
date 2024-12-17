@@ -7,7 +7,7 @@ export default function HomePage() {
     <View style={styles.container}>
       {/* Top Navigation Bar */}
       <View style={styles.topBar}>
-        <Text style={styles.timeText}>3:05 pm</Text>
+        <Text style={styles.timeText}>3:05 pm Mobarok is here</Text>
         <View style={styles.rightIcons}>
           <Ionicons name="wifi" size={20} color="black" />
           <Ionicons name="settings" size={20} color="black" style={styles.iconSpacing} />
