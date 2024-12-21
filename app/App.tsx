@@ -45,7 +45,7 @@ export default function App() {
 
     // Mock API login logic
     if (email === "user@example.com" && password === "password123") {
-      router.push("/dashboard");
+      router.push("/dashboard.tsx");
     } else {
       alert("Invalid email or password.");
     }
@@ -111,7 +111,7 @@ export default function App() {
 }
 
 // Get dynamic styles based on screen width
-const getResponsiveStyles = (width) => {
+const getResponsiveStyles = (width: number) => {
   const isSmallScreen = width < 600;
 
   return StyleSheet.create({
