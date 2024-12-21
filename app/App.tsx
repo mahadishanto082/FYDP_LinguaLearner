@@ -16,8 +16,8 @@ import * as Google from "expo-auth-session/providers/google";
 export default function App() {
   const { width } = useWindowDimensions(); // Get current screen width for responsiveness
   const styles = getResponsiveStyles(width); // Get dynamic styles
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
 
   // Ensure web authentication session is completed
   webBrowser.maybeCompleteAuthSession();
@@ -44,10 +44,10 @@ export default function App() {
     }
 
     // Mock API login logic
-    if (email === "user@example.com" && password === "password123") {
+    if (email === "shanto" && password === "123") {
+      alert("login successful.");
+
       router.push("/dashboard");
-    } else {
-      alert("Invalid email or password.");
     }
   };
 
@@ -111,7 +111,7 @@ export default function App() {
 }
 
 // Get dynamic styles based on screen width
-const getResponsiveStyles = (width) => {
+const getResponsiveStyles = (width: number) => {
   const isSmallScreen = width < 600;
 
   return StyleSheet.create({
