@@ -12,6 +12,8 @@ import { AntDesign } from "@expo/vector-icons"; // For Google icon
 import { useRouter } from "expo-router"; // Import useRouter
 import * as webBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
+import { Redirect } from "expo-router";
+import { Link } from "expo-router";
 
 export default function App() {
   const { width } = useWindowDimensions(); // Get current screen width for responsiveness
@@ -42,10 +44,11 @@ export default function App() {
       alert("Please enter both email and password.");
       return;
     }
+    //console.log(handleLogin); 
 
     // Mock API login logic
-    if (email === "user@example.com" && password === "password123") {
-      router.push("/dashboard.tsx");
+    if (email === "user" && password === "password123") {
+      router.push("/app/(tabs)");
     } else {
       alert("Invalid email or password.");
     }
