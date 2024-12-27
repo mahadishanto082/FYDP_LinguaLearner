@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -8,34 +8,17 @@ import {
   useWindowDimensions,
 } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons"; // For Facebook icon
-import { AntDesign } from "@expo/vector-icons"; // For Google icon
 import { useRouter } from "expo-router"; // Import useRouter
-import * as webBrowser from "expo-web-browser";
-import * as Google from "expo-auth-session/providers/google";
-
-// Ensure web authentication session is completed
-webBrowser.maybeCompleteAuthSession();
 
 export default function App() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
-  const [request, response, promptAsync] = Google.useAuthRequest({
-    clientId:
-      "1093794996582-2m447immjarhail3ef6so84a7h013ghj.apps.googleusercontent.com",
-  });
 
   const router = useRouter(); // Initialize the router
 
   // Get window dimensions
   const { width } = useWindowDimensions();
   const styles = getResponsiveStyles(width);
-
-  useEffect(() => {
-    if (response?.type === "success") {
-      router.push("/");
-    }
-  }, [response, router]);
 
   const handleLogin = () => {
     if (!email || !password) {
@@ -89,14 +72,7 @@ export default function App() {
 
         <Text style={styles.orText}>or</Text>
 
-        <TouchableOpacity
-          style={styles.socialButton}
-          onPress={() => promptAsync()}
-        >
-          <AntDesign name="google" size={20} color="black" />
-          <Text style={styles.socialButtonText}>Login with Google</Text>
-        </TouchableOpacity>
-
+        {/* Facebook Button */}
         <TouchableOpacity style={[styles.socialButton, styles.facebookButton]}>
           <FontAwesome5 name="facebook" size={20} color="white" />
           <Text style={[styles.socialButtonText, styles.facebookButtonText]}>
