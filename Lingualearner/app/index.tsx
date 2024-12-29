@@ -6,10 +6,11 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import { useRouter } from "expo-router"; // Import useRouter for routing
+import { useRouter } from "expo-router";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 const Login = () => {
-  const router = useRouter(); // Initialize useRouter
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,9 +20,8 @@ const Login = () => {
       return;
     }
 
-    // Mock authentication logic
     if (email === "Shanto" && password === "123") {
-      router.push("/dashboard"); // Navigate to the Dashboard route
+      router.push("/dashboard");
     } else {
       alert("Invalid email or password.");
     }
@@ -67,7 +67,13 @@ const Login = () => {
 
         <Text style={styles.orText}>or</Text>
 
-        {/* Facebook Button */}
+        <TouchableOpacity style={[styles.socialButton, styles.googleButton]}>
+          <FontAwesome5 name="google" size={20} color="black" />
+          <Text style={[styles.socialButtonText, styles.googleButtonText]}>
+            Login with Google
+          </Text>
+        </TouchableOpacity>
+
         <TouchableOpacity style={[styles.socialButton, styles.facebookButton]}>
           <FontAwesome5 name="facebook" size={20} color="white" />
           <Text style={[styles.socialButtonText, styles.facebookButtonText]}>
@@ -87,9 +93,23 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#D9D2E9",
   },
-  title: {
+  appTitle: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "#5A3D8A",
+    marginBottom: 30,
+  },
+  loginContainer: {
+    width: "100%",
+    backgroundColor: "#F1F1F1",
+    borderRadius: 20,
+    padding: 20,
+    alignItems: "center",
+  },
+  loginTitle: {
     fontSize: 24,
     fontWeight: "bold",
+    color: "#6E44A9",
     marginBottom: 20,
   },
   input: {
@@ -98,20 +118,76 @@ const styles = StyleSheet.create({
     backgroundColor: "#ECE2F0",
     borderRadius: 10,
     paddingHorizontal: 15,
-    marginBottom: 10,
+    marginBottom: 15,
     color: "#000",
   },
-  button: {
+  forgotPassword: {
+    color: "#6E44A9",
+    fontWeight: "500",
+    fontSize: 14,
+    marginBottom: 20,
+  },
+  loginButton: {
     width: "100%",
     height: 50,
-    backgroundColor: "#9B59B6",
+    backgroundColor: "#8B5FBF",
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 20,
   },
-  buttonText: {
+  loginButtonText: {
     color: "#FFF",
     fontWeight: "bold",
+    fontSize: 16,
+  },
+  signupContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 15,
+  },
+  signupText: {
+    color: "#6E44A9",
+    fontSize: 14,
+  },
+  signupLink: {
+    color: "#6E44A9",
+    fontWeight: "bold",
+    fontSize: 14,
+  },
+  orText: {
+    color: "#6E44A9",
+    fontSize: 14,
+    marginBottom: 15,
+  },
+  socialButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: 50,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  googleButton: {
+    backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "#DDD",
+  },
+  googleButtonText: {
+    color: "#000",
+    marginLeft: 10,
+    fontSize: 14,
+    fontWeight: "500",
+  },
+  facebookButton: {
+    backgroundColor: "#4267B2",
+  },
+  facebookButtonText: {
+    color: "#FFF",
+    marginLeft: 10,
+    fontSize: 14,
+    fontWeight: "500",
   },
 });
 
